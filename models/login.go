@@ -7,7 +7,7 @@ import "github.com/gameley-tc/bi-go"
 type LogLogin struct {
 	LogRole
 	LogDevices
-	// 登录类型
+	// 登录类型 0登出 1登入
 	LoginType bigo.LogEnumStatus
 	// 玩家好友数量
 	friendsNum int
