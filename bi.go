@@ -3,6 +3,7 @@
 package bigo
 
 import (
+	"log"
 	"net"
 )
 
@@ -19,19 +20,22 @@ type BIModel interface {
 func NewGameleySender(addr string, gameId int) *GameleySender {
 	udpAddr, err := net.ResolveUDPAddr("udp4", addr)
 	if err != nil {
-		print("配置Addr有误")
+		log.Print("配置Addr有误")
 		return nil
 	}
 	udpConn, err := net.DialUDP("udp4", nil, udpAddr)
 	if err != nil {
-		print("连接日志服务失败")
+		log.Print("连接日志服务失败")
 		return nil
 	}
+	log.Print("连接日志服务成功")
 	return &GameleySender{Addr: addr, GameId: gameId, conn: udpConn}
 }
 
 func (g *GameleySender) Send(biModel BIModel) {
 	if _, err := g.conn.Write([]byte(biModel.ToString())); err != nil {
 		print("发送日志 ---->", biModel.ToString(), "失败")
+		return
 	}
+	log.Print("发送日志 --->", biModel.ToString(), "成功")
 }
