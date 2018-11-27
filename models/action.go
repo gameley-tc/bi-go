@@ -5,9 +5,9 @@ package models
 import "github.com/gameley-tc/bi-go"
 
 type LogAction struct {
-	LogBaseAccountRole
+	LogRole
 	LogDevices
-	LogType bigo.TypesAction
+	LogType bigo.LogEnumAction
 	actionType int
 	actionNumber int
 	g1 int64

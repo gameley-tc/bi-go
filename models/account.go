@@ -2,8 +2,8 @@
 
 package models
 
-type LogBaseAccount struct {
-	LogBase
+type LogAccount struct {
+	LogPlat
 	// 游戏ID
 	gameId int
 }

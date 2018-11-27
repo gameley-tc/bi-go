@@ -4,7 +4,7 @@ package models
 
 import "time"
 
-type LogBase struct {
+type LogPlat struct {
 	// 渠道账号唯一id
 	uuid string
 	// 平台ID

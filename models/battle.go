@@ -5,9 +5,9 @@ package models
 import "github.com/gameley-tc/bi-go"
 
 type LogBattle struct {
-	LogBaseReason
+	LogReason
 	// 日志类型 1战斗开始 2战斗成功结束 3战斗失败结束
-	LogType bigo.TypesGamePattern
+	LogType bigo.LogEnumGamePattern
 	// 关卡类型
 	BattleType int
 	// 关卡ID

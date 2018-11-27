@@ -2,16 +2,22 @@
 
 package models
 
-import "github.com/gameley-tc/bi-go"
+import "time"
 
-type LogBaseReason struct {
-	LogBaseRole
+type LogGuildBase struct {
+	// 平台ID
+	platId int
+	// 分区id
+	regionId int
+	// 时间
+	dt time.Time
 	// 关联一次事件的唯一ID
 	sequenceId string
 	// 货币变动一级原因
-	reason     string
+	reason string
 	// 货币变动二级原因 没有填0
-	subReason  string
-	// 增加或减少
-	addOrReduce bigo.TypesChange
+	subReason string
+	// 公会ID
+	guildId int
 }
+

@@ -16,9 +16,9 @@ type LogDevices struct {
 	// 移动终端机型
 	systemHardware string
 	// 运营商
-	Telecom bigo.TypesTelecom
+	Telecom bigo.LogEnumTelecom
 	// 网络类型
-	network bigo.TypesNetwork
+	network bigo.LogEnumNetwork
 	// cpu类型-频率-核数
 	cpuHardware string
 	// gpu类型-频率-核数

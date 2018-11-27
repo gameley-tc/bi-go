@@ -3,6 +3,6 @@
 package models
 
 type LogCustom struct {
-	LogBaseRole
+	LogRole
 	tableName string
 }

@@ -7,9 +7,9 @@ import (
 )
 
 type LogAdVideo struct {
-	LogBaseRole
+	LogRole
 	// 视频触发点
 	Point int
 	// 具体动作
-	AdType bigo.TypesAd
+	AdType bigo.LogEnumAd
 }

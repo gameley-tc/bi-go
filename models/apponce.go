@@ -3,7 +3,7 @@
 package models
 
 type LogAppOnce struct {
-	LogBaseAccountRole
+	LogRole
 	// 行为编号
 	ActionNumber int
 }

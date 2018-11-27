@@ -3,7 +3,7 @@
 package models
 
 type LogCdKey struct {
-	LogBaseRole
+	LogRole
 	// 活动ID
 	ActionId int
 	// 玩家输入的兑换码

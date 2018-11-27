@@ -3,7 +3,7 @@
 package models
 
 type LogEnergy struct {
-	LogBaseReason
+	LogReason
 	// 玩家原来的体力
 	oldEnergy int
 	// 玩家新的体力

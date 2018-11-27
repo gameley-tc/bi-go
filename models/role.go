@@ -4,8 +4,8 @@ package models
 
 import "time"
 
-type LogBaseRole struct {
-	LogBase
+type LogRole struct {
+	LogPlat
 	// 角色注册时间 在当前区服注册时间 跟reged无关
 	regDt time.Time
 	// 分区玩家id

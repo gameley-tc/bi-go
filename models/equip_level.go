@@ -3,7 +3,7 @@
 package models
 
 type LogEquipLevel struct {
-	LogBaseReason
+	LogReason
 	// 装备类型
 	equipType int
 	// 装备ID

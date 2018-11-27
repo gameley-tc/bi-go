@@ -2,8 +2,8 @@
 
 package models
 
-type LogBaseAccountRole struct {
-	LogBase
+type LogAccountRole struct {
+	LogPlat
 	// 游戏ID
 	gameId int
 	// 分区玩家id
