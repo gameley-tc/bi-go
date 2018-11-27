@@ -4,6 +4,7 @@ package models
 
 import (
 	"github.com/gameley-tc/bi-go"
+	"strconv"
 )
 
 type LogAdVideo struct {
@@ -13,3 +14,8 @@ type LogAdVideo struct {
 	// 具体动作
 	AdType bigo.LogEnumAd
 }
+
+func (l *LogAdVideo) ToString() string {
+	return bigo.BiJoin("log_ad_video", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(int(l.AdType)))
+}
+

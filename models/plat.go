@@ -2,7 +2,13 @@
 
 package models
 
-import "time"
+import (
+	"time"
+)
+
+type BIModel interface {
+	ToString() string
+}
 
 type LogPlat struct {
 	// 渠道账号唯一id

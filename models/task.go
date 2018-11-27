@@ -10,4 +10,3 @@ type LogTask struct {
 	// 任务ID
 	taskId int
 }
-
