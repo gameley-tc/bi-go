@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package models
+package bigo
 
 // 新手任务日志表
 type LogNewTask struct {

@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package models
+package bigo
 
 // 分享出流水
 type LogShareOut struct {
