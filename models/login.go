@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "github.com/gameley-tc/bi-go"
 
@@ -10,16 +10,15 @@ type LogLogin struct {
 	// 登录类型 0登出 1登入
 	LoginType bigo.LogEnumStatus
 	// 玩家好友数量
-	friendsNum int
+	FriendsNum int
 	// 本次登录在线时间 退出时有,秒为单位
-	online int
+	Online int
 	// 玩家战力
-	power int
+	Power int
 	// 体力
-	energy int
+	Energy int
 	// 公会ID 没有公会填0
-	guildId string
+	GuildId string
 	// 角色昵称 注意昵称中不能有|
-	roleName string
+	RoleName string
 }
-

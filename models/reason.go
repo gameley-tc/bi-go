@@ -1,17 +1,17 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "github.com/gameley-tc/bi-go"
 
 type LogReason struct {
 	LogRole
 	// 关联一次事件的唯一ID
-	sequenceId string
+	SequenceId string
 	// 货币变动一级原因
-	reason     string
+	Reason string
 	// 货币变动二级原因 没有填0
-	subReason  string
+	SubReason string
 	// 增加或减少
-	addOrReduce bigo.LogEnumChange
+	AddOrReduce bigo.LogEnumChange
 }

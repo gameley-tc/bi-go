@@ -1,8 +1,8 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 type LogCustom struct {
 	LogRole
-	tableName string
+	TableName string
 }

@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import (
 	"github.com/gameley-tc/bi-go"
@@ -15,11 +15,6 @@ type LogAdVideo struct {
 	AdType bigo.LogEnumAd
 }
 
-func NewLogAdVideo(logRole LogRole, point int, adType bigo.LogEnumAd) *LogAdVideo {
-	return &LogAdVideo{LogRole: logRole, Point: point, AdType: adType}
-}
-
 func (l *LogAdVideo) ToString() string {
 	return bigo.BiJoin("log_ad_video", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(int(l.AdType)))
 }
-

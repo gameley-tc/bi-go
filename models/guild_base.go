@@ -1,23 +1,22 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "time"
 
 type LogGuildBase struct {
 	// 平台ID
-	platId int
+	PlatId int
 	// 分区id
-	regionId int
+	RegionId int
 	// 时间
-	dt time.Time
+	Dt time.Time
 	// 关联一次事件的唯一ID
-	sequenceId string
+	SequenceId string
 	// 货币变动一级原因
-	reason string
+	Reason string
 	// 货币变动二级原因 没有填0
-	subReason string
+	SubReason string
 	// 公会ID
-	guildId int
+	GuildId int
 }
-

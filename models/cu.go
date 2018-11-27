@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "time"
 
@@ -18,4 +18,3 @@ type LogCu struct {
 	// 非付费在线人数
 	PayNotNum int
 }
-

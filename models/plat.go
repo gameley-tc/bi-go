@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import (
 	"time"
@@ -8,11 +8,11 @@ import (
 
 type LogPlat struct {
 	// 渠道账号唯一id
-	uuid string
+	Uuid string
 	// 平台ID
-	platId int
+	PlatId int
 	// 渠道ID
-	channelId int
+	ChannelId int
 	// 时间
-	dt time.Time
+	Dt time.Time
 }

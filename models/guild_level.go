@@ -1,14 +1,13 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 type LogGuildLevel struct {
 	LogGuildBase
 	// 公会原来的等级
-	guildOldLevel int
+	GuildOldLevel int
 	// 公会新的等级
-	guildNewLevel int
+	GuildNewLevel int
 	// 本次变动的等级
-	guildLevel int
+	GuildLevel int
 }
-

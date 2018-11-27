@@ -1,6 +1,6 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "github.com/gameley-tc/bi-go"
 
@@ -13,6 +13,5 @@ type LogBattle struct {
 	// 关卡ID
 	BattleId int
 	// 本次闯关时间 单位秒 结束时有
-	Time int
+	Times int
 }
-

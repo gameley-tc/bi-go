@@ -1,13 +1,12 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 // 分享入流水
 type LogShareIn struct {
 	LogRole
 	// 分享点
-	point int
+	Point int
 	// 是否是新玩家
-	newPlayer int
+	NewPlayer int
 }
-

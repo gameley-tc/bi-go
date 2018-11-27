@@ -1,40 +1,40 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 import "github.com/gameley-tc/bi-go"
 
 type LogDevices struct {
 	// 设备唯一id
-	deviceId string
+	DeviceId string
 	// ip
-	ip string
+	Ip string
 	// 客户端版本号
-	clientVersion string
+	ClientVersion string
 	// 终端操作系统版本
-	systemSoftware string
+	SystemSoftware string
 	// 移动终端机型
-	systemHardware string
+	SystemHardware string
 	// 运营商
 	Telecom bigo.LogEnumTelecom
 	// 网络类型
-	network bigo.LogEnumNetwork
+	Network bigo.LogEnumNetwork
 	// cpu类型-频率-核数
-	cpuHardware string
+	CpuHardware string
 	// gpu类型-频率-核数
-	gpuHardware string
+	GpuHardware string
 	// 内存
-	memory int
+	Memory int
 	// 显示屏宽度
-	screenWidth int
+	ScreenWidth int
 	// 显示屏高度
-	screenHeight int
+	ScreenHeight int
 	// 像素密度
-	density float32
+	Density float32
 	// openGL render信息
-	glRender string
+	GlRender string
 	// openGL 版本信息
-	glVersion string
+	GlVersion string
 	// 手机号
-	phoneNumber string
+	PhoneNumber string
 }

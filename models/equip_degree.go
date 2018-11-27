@@ -1,18 +1,17 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
-type  LogEquipDegree struct {
+type LogEquipDegree struct {
 	LogReason
 	// 装备类型
-	equipType int
+	EquipType int
 	// 装备ID
-	equipId int
+	EquipId int
 	// 装备原来的阶数
-	equipOldDegree int
+	EquipOldDegree int
 	// 装备新的阶数
-	equipNewDegree int
+	EquipNewDegree int
 	// 本次变动的阶数
-	equipDegree int
+	EquipDegree int
 }
-

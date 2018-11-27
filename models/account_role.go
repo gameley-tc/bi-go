@@ -1,17 +1,17 @@
 // Copyright 2018 The Gameley-TC Authors. All rights reserved.
 
-package bigo
+package models
 
 type LogAccountRole struct {
 	LogPlat
 	// 游戏ID
-	gameId int
+	GameId int
 	// 分区玩家id
-	uid string
+	Uid string
 	// 分区id
-	regionId int
+	RegionId int
 	// 玩家等级
-	level int
+	Level int
 	// 注册过吗
-	reged bool
+	Reged int
 }
