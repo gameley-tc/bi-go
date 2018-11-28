@@ -2,11 +2,15 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 // 充值日志
 type LogPay struct {
-	*LogReason
+	*LogRole
 	// 充值类型 1代币 2月卡
 	PayType bigo.LogEnumPay
 	// 订单号
@@ -38,6 +42,12 @@ type LogPay struct {
 	DBeforeStoreNum int64
 }
 
-func NewLogPay(logReason *LogReason, payType bigo.LogEnumPay, orderNumber string, DPrice int64, DStoreNum int64, totalNum int64, FPayFlag int, payChannelId int, payId string, payIdName string, DNum int, DBeforeStoreNum int64) *LogPay {
-	return &LogPay{LogReason: logReason, PayType: payType, OrderNumber: orderNumber, DPrice: DPrice, DStoreNum: DStoreNum, TotalNum: totalNum, FPayFlag: FPayFlag, PayChannelId: payChannelId, PayId: payId, PayIdName: payIdName, DNum: DNum, DBeforeStoreNum: DBeforeStoreNum}
+func (l *LogPay) ToString(gameId string) string {
+	return bigo.BiJoin("log_pay", l.LogRole.ToString(), strconv.Itoa(int(l.PayType)), l.OrderNumber, strconv.FormatInt(l.DPrice, 10), strconv.FormatInt(l.DStoreNum, 10), strconv.FormatInt(l.TotalNum, 10), strconv.Itoa(l.FPayFlag), strconv.Itoa(l.PayChannelId), l.PayId, l.PayIdName, strconv.Itoa(l.DNum), strconv.FormatInt(l.DBeforeStoreNum, 10))
 }
+
+func NewLogPay(logRole *LogRole, payType bigo.LogEnumPay, orderNumber string, DPrice int64, DStoreNum int64, totalNum int64, FPayFlag int, DNum int, DBeforeStoreNum int64) *LogPay {
+	return &LogPay{LogRole: logRole, PayType: payType, OrderNumber: orderNumber, DPrice: DPrice, DStoreNum: DStoreNum, TotalNum: totalNum, FPayFlag: FPayFlag, DNum: DNum, DBeforeStoreNum: DBeforeStoreNum}
+}
+
+
