@@ -2,7 +2,11 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogLogin struct {
 	*LogRole
@@ -23,6 +27,12 @@ type LogLogin struct {
 	RoleName string
 }
 
+func (l *LogLogin) ToString(gameId string) string {
+	return bigo.BiJoin("log_login", l.LogRole.ToString(), l.LogDevices.ToString(), strconv.Itoa(int(l.LoginType)), strconv.Itoa(l.FriendsNum), strconv.Itoa(l.Online), strconv.Itoa(l.Power), strconv.Itoa(l.Energy), l.GuildId, l.RoleName)
+}
+
 func NewLogLogin(logRole *LogRole, logDevices *LogDevices, loginType bigo.LogEnumStatus, friendsNum int, online int, power int, energy int, guildId string, roleName string) *LogLogin {
 	return &LogLogin{LogRole: logRole, LogDevices: logDevices, LoginType: loginType, FriendsNum: friendsNum, Online: online, Power: power, Energy: energy, GuildId: guildId, RoleName: roleName}
 }
+
+

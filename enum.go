@@ -41,8 +41,8 @@ const (
 	LogEnumGamePatternError   LogEnumGamePattern = 3     // 失败结束
 	LogEnumGuildCreate        LogEnumGuild       = 1     // 公会创建
 	LogEnumGuildDisband       LogEnumGuild       = 2     // 公会解散
-	LogEnumGuildUCreate       LogEnumGuildU      = 1     // 公会创建
-	LogEnumGuildUDisband      LogEnumGuildU      = 2     // 公会解散
+	LogEnumGuildUJoin         LogEnumGuildU      = 1     // 加入公会
+	LogEnumGuildULeave        LogEnumGuildU      = 2     // 离开公会
 	LogEnumGotPay             LogEnumGot         = 10001 // 充值
 	LogEnumGotContinuousLogin LogEnumGot         = 10002 // 连续登录活动
 	LogEnumGotConsumeStore    LogEnumGot         = 1     // 商城购买

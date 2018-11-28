@@ -2,7 +2,11 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogEquipLevel struct {
 	*LogReason
@@ -16,6 +20,10 @@ type LogEquipLevel struct {
 	EquipNewLevel int
 	// 本次变动的等级 非负数
 	EquipLevel int
+}
+
+func (l *LogEquipLevel) ToString(gameId string) string {
+	return bigo.BiJoin("log_equip_level", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel), strconv.Itoa(l.EquipLevel))
 }
 
 func NewLogEquipLevel(logReason *LogReason, equipType int, equipId int, equipOldLevel int, equipNewLevel int) *LogEquipLevel {

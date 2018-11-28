@@ -2,10 +2,16 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogItem struct {
 	*LogReason
+	// 增加或减少
+	AddOrReduce int
 	// 道具类型
 	ItemType int
 	// 道具ID
@@ -18,6 +24,10 @@ type LogItem struct {
 	Num int
 }
 
+func (l *LogItem) ToString(gameId string) string {
+	return bigo.BiJoin("log_item", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.ItemType), strconv.Itoa(l.ItemId), strconv.Itoa(l.OldNum), strconv.Itoa(l.NewNum), strconv.Itoa(l.Num))
+}
+
 func NewLogItem(logReason *LogReason, itemType int, itemId int, oldNum int, newNum int) *LogItem {
-	return &LogItem{LogReason: logReason, ItemType: itemType, ItemId: itemId, OldNum: oldNum, NewNum: newNum, Num: bigo.BiAbs(newNum - oldNum)}
+	return &LogItem{LogReason: logReason, AddOrReduce: bigo.BiGetAddOrReduce(newNum, oldNum), ItemType: itemType, ItemId: itemId, OldNum: oldNum, NewNum: newNum, Num: bigo.BiAbs(newNum - oldNum)}
 }

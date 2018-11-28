@@ -5,6 +5,7 @@ package bigo
 import (
 	"log"
 	"net"
+	"strconv"
 )
 
 type GameleySender struct {
@@ -32,9 +33,9 @@ func NewGameleySender(addr string, gameId int) *GameleySender {
 }
 
 func (g *GameleySender) Send(biModel BIModel) {
-	if _, err := g.conn.Write([]byte(biModel.ToString())); err != nil {
-		print("发送日志 ----> ", biModel.ToString(), " 失败 ")
+	if _, err := g.conn.Write([]byte(biModel.ToString(strconv.Itoa(g.GameId)))); err != nil {
+		print("发送日志 ----> ", biModel.ToString(strconv.Itoa(g.GameId)), " 失败 ")
 		return
 	}
-	log.Print("发送日志 ---> ", biModel.ToString(), " 成功 ")
+	log.Print("发送日志 ---> ", biModel.ToString(strconv.Itoa(g.GameId)), " 成功 ")
 }

@@ -2,6 +2,12 @@
 
 package bimodels
 
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
+
 // 等级变动日志
 type LogLevel struct {
 	*LogReason
@@ -13,6 +19,10 @@ type LogLevel struct {
 	Num int
 }
 
-func NewLogLevel(logReason *LogReason, heroId int, newLevel int, num int) *LogLevel {
-	return &LogLevel{LogReason: logReason, HeroId: heroId, NewLevel: newLevel, Num: num}
+func (l *LogLevel) ToString(gameId string) string {
+	return bigo.BiJoin("log_level", l.LogReason.ToString(), strconv.Itoa(l.HeroId), strconv.Itoa(l.NewLevel), strconv.Itoa(l.Num))
+}
+
+func NewLogLevel(logReason *LogReason, heroId int, newLevel int) *LogLevel {
+	return &LogLevel{LogReason: logReason, HeroId: heroId, NewLevel: newLevel, Num: bigo.BiAbs(newLevel - logReason.Level)}
 }

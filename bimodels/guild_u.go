@@ -2,16 +2,24 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogGuildU struct {
 	*LogReason
 	// 日志类型
-	GuildUType bigo.LogEnumGuildU
+	LogType bigo.LogEnumGuildU
 	// 公会ID
 	GuildId int
 }
 
-func NewLogGuildU(logReason *LogReason, guildUType bigo.LogEnumGuildU, guildId int) *LogGuildU {
-	return &LogGuildU{LogReason: logReason, GuildUType: guildUType, GuildId: guildId}
+func (l *LogGuildU) ToString(gameId string) string {
+	return bigo.BiJoin("log_guild_u", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.GuildId))
+}
+
+func NewLogGuildU(logReason *LogReason, logType bigo.LogEnumGuildU, guildId int) *LogGuildU {
+	return &LogGuildU{LogReason: logReason, LogType: logType, GuildId: guildId}
 }

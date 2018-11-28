@@ -2,12 +2,16 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogGamePattern struct {
 	*LogReason
 	// 日志类型 1战斗开始 2战斗成功结束 3战斗失败结束
-	GamePattern bigo.LogEnumGamePattern
+	LogType bigo.LogEnumGamePattern
 	// 模式类型
 	PatternType int
 	// 模式ID
@@ -18,6 +22,11 @@ type LogGamePattern struct {
 	Times int
 }
 
-func NewLogGamePattern(logReason *LogReason, gamePattern bigo.LogEnumGamePattern, patternType int, patternId int, patternSubId int, times int) *LogGamePattern {
-	return &LogGamePattern{LogReason: logReason, GamePattern: gamePattern, PatternType: patternType, PatternId: patternId, PatternSubId: patternSubId, Times: times}
+func (l *LogGamePattern) ToString(gameId string) string {
+	return bigo.BiJoin("log_game_pattern", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.PatternType), strconv.Itoa(l.PatternId), strconv.Itoa(l.PatternSubId), strconv.Itoa(l.Times))
 }
+
+func NewLogGamePattern(logReason *LogReason, logType bigo.LogEnumGamePattern, patternType int, patternId int, patternSubId int, times int) *LogGamePattern {
+	return &LogGamePattern{LogReason: logReason, LogType: logType, PatternType: patternType, PatternId: patternId, PatternSubId: patternSubId, Times: times}
+}
+

@@ -2,7 +2,11 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogGuildLevel struct {
 	*LogGuildBase
@@ -12,6 +16,10 @@ type LogGuildLevel struct {
 	GuildNewLevel int
 	// 本次变动的等级
 	GuildLevel int
+}
+
+func (l *LogGuildLevel) ToString(gameId string) string {
+	return bigo.BiJoin("log_guild_level", l.LogGuildBase.ToString(), strconv.Itoa(l.GuildOldLevel), strconv.Itoa(l.GuildNewLevel), strconv.Itoa(l.GuildLevel))
 }
 
 func NewLogGuildLevel(logGuildBase *LogGuildBase, guildOldLevel int, guildNewLevel int) *LogGuildLevel {

@@ -2,7 +2,11 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogEquipPlayWay struct {
 	*LogReason
@@ -18,6 +22,10 @@ type LogEquipPlayWay struct {
 	EquipLevel int
 	// 装备玩法类型
 	PlayType int
+}
+
+func (l *LogEquipPlayWay) ToString(gameId string) string {
+	return bigo.BiJoin("log_equip_playway", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel),strconv.Itoa(l.EquipLevel), strconv.Itoa(l.PlayType))
 }
 
 func NewLogEquipPlayWay(logReason *LogReason, equipType int, equipId int, equipOldLevel int, equipNewLevel int, playType int) *LogEquipPlayWay {

@@ -2,7 +2,12 @@
 
 package bimodels
 
-import "time"
+import (
+	"strconv"
+	"time"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogGuildBase struct {
 	// 平台ID
@@ -21,6 +26,10 @@ type LogGuildBase struct {
 	SubReason string
 	// 公会ID
 	GuildId int
+}
+
+func (l *LogGuildBase) ToString() string {
+	return bigo.BiJoin(strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), bigo.BiDateFormat(l.Dt), l.SequenceId, l.Reason, l.SubReason, strconv.Itoa(l.GuildId))
 }
 
 func NewLogGuildBase(channelId int, regionId int, dt time.Time, sequenceId string, reason string, subReason string, guildId int) *LogGuildBase {
