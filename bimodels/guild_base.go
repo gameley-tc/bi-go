@@ -7,6 +7,8 @@ import "time"
 type LogGuildBase struct {
 	// 平台ID
 	PlatId int
+	// 渠道ID
+	ChannelId int
 	// 分区id
 	RegionId int
 	// 时间
@@ -19,4 +21,8 @@ type LogGuildBase struct {
 	SubReason string
 	// 公会ID
 	GuildId int
+}
+
+func NewLogGuildBase(channelId int, regionId int, dt time.Time, sequenceId string, reason string, subReason string, guildId int) *LogGuildBase {
+	return &LogGuildBase{PlatId: channelId % 100, ChannelId: channelId, RegionId: regionId, Dt: dt, SequenceId: sequenceId, Reason: reason, SubReason: subReason, GuildId: guildId}
 }

@@ -17,7 +17,7 @@ type LogPay struct {
 	// 充值后存量
 	// 充值后玩家拥有的代币（钻石）数
 	DStoreNum int64
-	// 充值后存量
+	// 截止该笔累计充值金额
 	// 跟设置的充值金额单位对应，默认为人民币分
 	TotalNum int64
 	// 首充标志位 只有当一个区服内的玩家第一次充值时发1，其他都发0
@@ -36,4 +36,8 @@ type LogPay struct {
 	// 充值前代币(钻石)存量
 	// 充值前玩家拥有的代币（钻石）数
 	DBeforeStoreNum int64
+}
+
+func NewLogPay(logReason *LogReason, payType bigo.LogEnumPay, orderNumber string, DPrice int64, DStoreNum int64, totalNum int64, FPayFlag int, payChannelId int, payId string, payIdName string, DNum int, DBeforeStoreNum int64) *LogPay {
+	return &LogPay{LogReason: logReason, PayType: payType, OrderNumber: orderNumber, DPrice: DPrice, DStoreNum: DStoreNum, TotalNum: totalNum, FPayFlag: FPayFlag, PayChannelId: payChannelId, PayId: payId, PayIdName: payIdName, DNum: DNum, DBeforeStoreNum: DBeforeStoreNum}
 }

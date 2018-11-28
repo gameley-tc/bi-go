@@ -7,3 +7,7 @@ type LogAccount struct {
 	// 游戏ID
 	GameId int
 }
+
+func NewLogAccount(logPlat *LogPlat) *LogAccount {
+	return &LogAccount{LogPlat: logPlat}
+}

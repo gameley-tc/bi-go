@@ -10,3 +10,7 @@ type LogNewTask struct {
 	// 跟步骤ID对应的引导顺序
 	OrderId int
 }
+
+func NewLogNewTask(logReason *LogReason, taskId int, orderId int) *LogNewTask {
+	return &LogNewTask{LogReason: logReason, TaskId: taskId, OrderId: orderId}
+}

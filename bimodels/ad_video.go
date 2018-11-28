@@ -4,6 +4,7 @@ package bimodels
 
 import (
 	"github.com/gameley-tc/bi-go"
+
 	"strconv"
 )
 
@@ -15,10 +16,10 @@ type LogAdVideo struct {
 	AdType bigo.LogEnumAd
 }
 
-func NewLogAdVideo(logRole LogRole, point int, adType bigo.LogEnumAd) *LogAdVideo {
+func NewLogAdVideo(logRole *LogRole, point int, adType bigo.LogEnumAd) *LogAdVideo {
 	return &LogAdVideo{LogRole: logRole, Point: point, AdType: adType}
 }
 
-func (l *LogAdVideo) ToString() string {
+func (l *LogAdVideo) ToString(gameId string) string {
 	return bigo.BiJoin("log_ad_video", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(int(l.AdType)))
 }

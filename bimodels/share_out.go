@@ -8,3 +8,7 @@ type LogShareOut struct {
 	// 分享点
 	Point int
 }
+
+func NewLogShareOut(logRole *LogRole, point int) *LogShareOut {
+	return &LogShareOut{LogRole: logRole, Point: point}
+}

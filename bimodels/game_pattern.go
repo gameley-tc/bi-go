@@ -17,3 +17,7 @@ type LogGamePattern struct {
 	// 本次闯关时间 单位秒 结束时有
 	Times int
 }
+
+func NewLogGamePattern(logReason *LogReason, gamePattern bigo.LogEnumGamePattern, patternType int, patternId int, patternSubId int, times int) *LogGamePattern {
+	return &LogGamePattern{LogReason: logReason, GamePattern: gamePattern, PatternType: patternType, PatternId: patternId, PatternSubId: patternSubId, Times: times}
+}

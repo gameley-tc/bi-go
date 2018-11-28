@@ -17,3 +17,7 @@ type LogFriends struct {
 	// 好友类型
 	FriendType int
 }
+
+func NewLogFriends(logReason *LogReason, addOrReduce bigo.LogEnumChange, oldFriendsNum int, newFriendsNum int, friendType int) *LogFriends {
+	return &LogFriends{LogReason: logReason, AddOrReduce: addOrReduce, OldFriendsNum: oldFriendsNum, NewFriendsNum: newFriendsNum, FriendType: friendType, FriendsNum: bigo.BiAbs(newFriendsNum - oldFriendsNum)}
+}

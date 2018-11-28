@@ -12,3 +12,7 @@ type LogLevel struct {
 	// 本次变动的等级
 	Num int
 }
+
+func NewLogLevel(logReason *LogReason, heroId int, newLevel int, num int) *LogLevel {
+	return &LogLevel{LogReason: logReason, HeroId: heroId, NewLevel: newLevel, Num: num}
+}

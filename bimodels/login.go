@@ -22,3 +22,7 @@ type LogLogin struct {
 	// 角色昵称 注意昵称中不能有|
 	RoleName string
 }
+
+func NewLogLogin(logRole *LogRole, logDevices *LogDevices, loginType bigo.LogEnumStatus, friendsNum int, online int, power int, energy int, guildId string, roleName string) *LogLogin {
+	return &LogLogin{LogRole: logRole, LogDevices: logDevices, LoginType: loginType, FriendsNum: friendsNum, Online: online, Power: power, Energy: energy, GuildId: guildId, RoleName: roleName}
+}

@@ -7,3 +7,7 @@ type LogGuildDonate struct {
 	// 	公会ID
 	GuildId int
 }
+
+func NewLogGuildDonate(logReason *LogReason, guildId int) *LogGuildDonate {
+	return &LogGuildDonate{LogReason: logReason, GuildId: guildId}
+}

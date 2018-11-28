@@ -2,7 +2,9 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogMoney struct {
 	*LogReason
@@ -28,4 +30,8 @@ type LogMoney struct {
 	ItemId int
 	// 是否属于商城购买 0否 1是
 	Shop int
+}
+
+func NewLogMoney(logReason *LogReason, oldMoney int64, newMoney int64, num int, addOrReduce bigo.LogEnumChange, moneyType int, itemIdName string, itemType int, itemId int, shop int) *LogMoney {
+	return &LogMoney{LogReason: logReason, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: addOrReduce, MoneyType: moneyType, ItemIdName: itemIdName, ItemType: itemType, ItemId: itemId, Shop: shop, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
 }

@@ -6,3 +6,7 @@ type LogCustom struct {
 	*LogRole
 	TableName string
 }
+
+func NewLogCustom(logRole *LogRole, tableName string) *LogCustom {
+	return &LogCustom{LogRole: logRole, TableName: tableName}
+}

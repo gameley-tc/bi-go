@@ -10,3 +10,7 @@ type LogTask struct {
 	// 任务ID
 	TaskId int
 }
+
+func NewLogTask(logReason *LogReason, taskType int, taskId int) *LogTask {
+	return &LogTask{LogReason: logReason, TaskType: taskType, TaskId: taskId}
+}

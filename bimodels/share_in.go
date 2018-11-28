@@ -10,3 +10,7 @@ type LogShareIn struct {
 	// 是否是新玩家
 	NewPlayer int
 }
+
+func NewLogShareIn(logRole *LogRole, point int, newPlayer int) *LogShareIn {
+	return &LogShareIn{LogRole: logRole, Point: point, NewPlayer: newPlayer}
+}

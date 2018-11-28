@@ -7,3 +7,7 @@ type LogReg struct {
 	*LogRole
 	*LogDevices
 }
+
+func NewLogReg(logRole *LogRole, logDevices *LogDevices) *LogReg {
+	return &LogReg{LogRole: logRole, LogDevices: logDevices}
+}

@@ -11,3 +11,7 @@ type LogGuild struct {
 	// 公会ID
 	GuildId int
 }
+
+func NewLogGuild(logReason *LogReason, guildType bigo.LogEnumGuild, guildId int) *LogGuild {
+	return &LogGuild{LogReason: logReason, GuildType: guildType, GuildId: guildId}
+}

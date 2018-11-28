@@ -14,7 +14,7 @@ type GameleySender struct {
 }
 
 type BIModel interface {
-	ToString() string
+	ToString(gameId string) string
 }
 
 func NewGameleySender(addr string, gameId int) *GameleySender {
@@ -28,14 +28,13 @@ func NewGameleySender(addr string, gameId int) *GameleySender {
 		log.Print("连接日志服务失败")
 		return nil
 	}
-	log.Print("连接日志服务成功")
 	return &GameleySender{Addr: addr, GameId: gameId, conn: udpConn}
 }
 
 func (g *GameleySender) Send(biModel BIModel) {
 	if _, err := g.conn.Write([]byte(biModel.ToString())); err != nil {
-		print("发送日志 ---->", biModel.ToString(), "失败")
+		print("发送日志 ----> ", biModel.ToString(), " 失败 ")
 		return
 	}
-	log.Print("发送日志 --->", biModel.ToString(), "成功")
+	log.Print("发送日志 ---> ", biModel.ToString(), " 成功 ")
 }

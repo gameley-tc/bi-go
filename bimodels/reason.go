@@ -12,6 +12,12 @@ type LogReason struct {
 	Reason string
 	// 货币变动二级原因 没有填0
 	SubReason string
-	// 增加或减少
-	AddOrReduce bigo.LogEnumChange
+}
+
+func NewLogReason(logRole *LogRole, sequenceId string, reason string, subReason string) *LogReason {
+	return &LogReason{LogRole: logRole, SequenceId: sequenceId, Reason: reason, SubReason: subReason}
+}
+
+func (l *LogReason) ToString() string {
+	return bigo.BiJoin(l.LogRole.ToString(), l.SequenceId, l.Reason, l.SubReason)
 }

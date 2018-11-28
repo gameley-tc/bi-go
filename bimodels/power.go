@@ -2,6 +2,8 @@
 
 package bimodels
 
+import "github.com/gameley-tc/bi-go"
+
 // 战力变动日志
 type LogPower struct {
 	*LogReason
@@ -11,4 +13,8 @@ type LogPower struct {
 	NewPower int64
 	// 本次变动的战力
 	Power int64
+}
+
+func NewLogPower(logReason *LogReason, oldPower int64, newPower int64) *LogPower {
+	return &LogPower{LogReason: logReason, OldPower: oldPower, NewPower: newPower, Power: bigo.BiAbsInt64(newPower - oldPower)}
 }

@@ -17,6 +17,6 @@ type LogPlat struct {
 	Dt time.Time
 }
 
-func NewLogPlat(uuid string, platId int, channelId int, dt time.Time) *LogPlat {
-	return &LogPlat{Uuid: uuid, PlatId: platId, ChannelId: channelId, Dt: dt}
+func NewLogPlat(uuid string, channelId int, dt time.Time) *LogPlat {
+	return &LogPlat{Uuid: uuid, PlatId: channelId % 100, ChannelId: channelId, Dt: dt}
 }

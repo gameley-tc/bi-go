@@ -2,6 +2,8 @@
 
 package bimodels
 
+import "github.com/gameley-tc/bi-go"
+
 type LogItem struct {
 	*LogReason
 	// 道具类型
@@ -14,4 +16,8 @@ type LogItem struct {
 	NewNum int
 	// 本次变动的道具数量
 	Num int
+}
+
+func NewLogItem(logReason *LogReason, itemType int, itemId int, oldNum int, newNum int) *LogItem {
+	return &LogItem{LogReason: logReason, ItemType: itemType, ItemId: itemId, OldNum: oldNum, NewNum: newNum, Num: bigo.BiAbs(newNum - oldNum)}
 }
