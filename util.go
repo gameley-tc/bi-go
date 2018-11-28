@@ -38,3 +38,13 @@ func BiGetAddOrReduce(new, old int) int {
 	return 0
 }
 
+func BiGetAddOrReduceInt64(new, old int64) int {
+	if (new - old) > 0 {
+		return 1
+	}
+	if (new - old ) == 0 {
+		return 2
+	}
+	return 0
+}
+
