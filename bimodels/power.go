@@ -2,11 +2,17 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 // 战力变动日志
 type LogPower struct {
 	*LogReason
+	// 增加或减少
+	AddOrReduce int
 	// 玩家原来的战力
 	OldPower int64
 	// 玩家新的战力
@@ -15,6 +21,10 @@ type LogPower struct {
 	Power int64
 }
 
+func (l *LogPower) ToString(gameId string) string {
+	return bigo.BiJoin("log_power", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.FormatInt(l.OldPower, 10), strconv.FormatInt(l.NewPower, 10), strconv.FormatInt(l.Power, 10))
+}
+
 func NewLogPower(logReason *LogReason, oldPower int64, newPower int64) *LogPower {
-	return &LogPower{LogReason: logReason, OldPower: oldPower, NewPower: newPower, Power: bigo.BiAbsInt64(newPower - oldPower)}
+	return &LogPower{LogReason: logReason, AddOrReduce: bigo.BiGetAddOrReduceInt64(newPower, oldPower), OldPower: oldPower, NewPower: newPower, Power: bigo.BiAbsInt64(newPower - oldPower)}
 }
