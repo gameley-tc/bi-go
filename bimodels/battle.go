@@ -12,7 +12,7 @@ type LogBattle struct {
 	*LogReason
 	// 日志类型 1战斗开始 2战斗成功结束 3战斗失败结束
 	LogType bigo.LogEnumGamePattern
-	// 关卡类型
+	// 关卡类型 自定义
 	BattleType int
 	// 关卡ID
 	BattleId int
@@ -21,7 +21,7 @@ type LogBattle struct {
 }
 
 func (l *LogBattle) ToString() string {
-	return bigo.BiJoin("log_battle", l.LogRole.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.BattleType), strconv.Itoa(l.BattleId), strconv.Itoa(l.Times))
+	return bigo.BiJoin("log_battle", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.BattleType), strconv.Itoa(l.BattleId), strconv.Itoa(l.Times))
 }
 
 func NewLogBattle(channelId int, uid string, logType bigo.LogEnumGamePattern, battleType int, battleId int, times int) *LogBattle {

@@ -11,14 +11,15 @@ import (
 // 打开APP只发一次日志必填字段
 type LogAppOnce struct {
 	*LogAccountRole
-	// 行为编号
+	*LogDevices
+	// 行为编号 自定义
 	ActionNumber int
 }
 
 func NewLogAppOnce(uuid string, channelId, actionNumber int) *LogAppOnce {
-	return &LogAppOnce{LogAccountRole: NewLogAccountRole(channelId, uuid, uuid), ActionNumber: actionNumber}
+	return &LogAppOnce{LogAccountRole: NewLogAccountRole(channelId, uuid, uuid), LogDevices: &LogDevices{}, ActionNumber: actionNumber}
 }
 
 func (l *LogAppOnce) ToString() string {
-	return bigo.BiJoin("log_app_once", l.LogAccountRole.ToString(), strconv.Itoa(l.ActionNumber))
+	return bigo.BiJoin("log_app_once", l.LogAccountRole.ToString(), l.LogDevices.ToString(), strconv.Itoa(l.ActionNumber))
 }

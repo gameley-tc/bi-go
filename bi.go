@@ -20,22 +20,23 @@ type BIModel interface {
 	ToString() string
 }
 
-func NewGameleySender(addr string, gameId, regionId int) *GameleySender {
+func InitBiSender(addr string, gameId, regionId int) {
 	udpAddr, err := net.ResolveUDPAddr("udp4", addr)
 	if err != nil {
 		log.Fatal("【BiSDK】", "配置Addr有误")
-		return nil
+		return
 	}
 	udpConn, err := net.DialUDP("udp4", nil, udpAddr)
 	if err != nil {
 		log.Print("【BiSDK】", "连接日志服务失败")
-		return nil
+		return
 	}
-	BiSender.Addr = addr
-	BiSender.GameId = gameId
-	BiSender.RegionId = regionId
-	BiSender.conn = udpConn
-	return BiSender
+	BiSender = &GameleySender{
+		Addr:addr,
+		GameId:gameId,
+		RegionId:regionId,
+		conn:udpConn,
+	}
 }
 
 func (g *GameleySender) Send(biModel BIModel) {

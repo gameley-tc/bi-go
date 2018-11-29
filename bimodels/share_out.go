@@ -15,7 +15,7 @@ type LogShareOut struct {
 	Point int
 }
 
-func (l *LogShareOut) ToString(gameId string) string {
+func (l *LogShareOut) ToString() string {
 	return bigo.BiJoin("log_share_out", l.LogRole.ToString(), strconv.Itoa(l.Point))
 }
 

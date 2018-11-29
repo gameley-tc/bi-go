@@ -26,7 +26,7 @@ func (l *LogAccountRole) ToString() string {
 	return bigo.BiJoin(l.Uuid, l.Uid, strconv.Itoa(l.GameId), strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), strconv.Itoa(l.Level), strconv.Itoa(l.Reged))
 }
 
-func (l *LogAccountRole) ToStringReg() string {
+func (l *LogAccountRole) ToStringU() string {
 	return bigo.BiJoin(l.Uuid, strconv.Itoa(l.GameId), strconv.Itoa(l.PlatId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt))
 }
 

@@ -33,7 +33,7 @@ type LogAction struct {
 }
 
 func (l *LogAction) ToString() string {
-	return bigo.BiJoin("log_action", l.LogAccountRole.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.ActionType), strconv.Itoa(l.ActionNumber), strconv.FormatInt(l.G1, 10), strconv.FormatInt(l.G2, 10), strconv.FormatInt(l.G3, 10), strconv.FormatInt(l.G4, 10), strconv.FormatInt(l.G5, 10), strconv.FormatInt(l.G6, 10), l.S1, l.S2, l.S3, l.S4, l.S5, l.S6)
+	return bigo.BiJoin("log_action", l.LogAccountRole.ToString(), l.LogDevices.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.ActionType), strconv.Itoa(l.ActionNumber), strconv.FormatInt(l.G1, 10), strconv.FormatInt(l.G2, 10), strconv.FormatInt(l.G3, 10), strconv.FormatInt(l.G4, 10), strconv.FormatInt(l.G5, 10), strconv.FormatInt(l.G6, 10), l.S1, l.S2, l.S3, l.S4, l.S5, l.S6)
 }
 
 func NewLogAction(uuid, uid string, logType bigo.LogEnumAction, channelId, actionType, actionNumber int) *LogAction {

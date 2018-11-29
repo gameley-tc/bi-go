@@ -10,7 +10,7 @@ import (
 
 type LogAdVideo struct {
 	*LogRole
-	// 视频触发点
+	// 视频触发点 游戏侧自定义
 	Point int
 	// 具体动作
 	ActionType bigo.LogEnumAd

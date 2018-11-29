@@ -14,6 +14,6 @@ func NewLogRegU(channelId int, uuid string) *LogRegU {
 }
 
 func (l *LogRegU) ToString() string {
-	return bigo.BiJoin("log_reg_u", l.LogAccountRole.ToStringReg(), l.LogDevices.ToString())
+	return bigo.BiJoin("log_reg_u", l.LogAccountRole.ToStringU(), l.LogDevices.ToString())
 }
 

@@ -23,6 +23,8 @@ func (l *LogLevel) ToString() string {
 	return bigo.BiJoin("log_level", l.LogReason.ToString(), strconv.Itoa(l.HeroId), strconv.Itoa(l.NewLevel), strconv.Itoa(l.Num))
 }
 
-func NewLogLevel(channelId int, uid string, heroId int, newLevel int) *LogLevel {
-	return &LogLevel{LogReason: NewLogReason(channelId, uid), HeroId: heroId, NewLevel: newLevel, Num: bigo.BiAbs(newLevel - logReason.Level)}
+func NewLogLevel(channelId int, uid string, oldLevel int, newLevel int) *LogLevel {
+	logReason := NewLogReason(channelId, uid)
+	logReason.Level = oldLevel
+	return &LogLevel{LogReason: NewLogReason(channelId, uid), NewLevel: newLevel, Num: bigo.BiAbs(newLevel - oldLevel)}
 }

@@ -12,7 +12,7 @@ type LogLogin struct {
 	*LogRole
 	*LogDevices
 	// 登录类型 0登出 1登入
-	LoginType bigo.LogEnumStatus
+	LoginType bigo.LogEnumUserAction
 	// 玩家好友数量
 	FriendsNum int
 	// 本次登录在线时间 退出时有,秒为单位
@@ -34,6 +34,6 @@ func (l *LogLogin) ToString() string {
 // 最基本的必填字段,如果还需要其它字段(online、guild_id、role_name)请自由组合
 // channelId 渠道id
 // loginType 登录类型
-func NewLogLogin(channelId int, uid string, loginType bigo.LogEnumStatus) *LogLogin {
+func NewLogLogin(channelId int, uid string, loginType bigo.LogEnumUserAction) *LogLogin {
 	return &LogLogin{LogRole: NewLogRole(channelId, uid), LogDevices: &LogDevices{}, LoginType: loginType}
 }

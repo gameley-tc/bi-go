@@ -17,7 +17,7 @@ type LogShareIn struct {
 	NewPlayer int
 }
 
-func (l *LogShareIn) ToString(gameId string) string {
+func (l *LogShareIn) ToString() string {
 	return bigo.BiJoin("log_share_in", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(l.NewPlayer))
 }
 

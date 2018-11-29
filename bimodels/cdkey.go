@@ -2,12 +2,16 @@
 
 package bimodels
 
-import "github.com/gameley-tc/bi-go"
+import (
+	"strconv"
+
+	"github.com/gameley-tc/bi-go"
+)
 
 type LogCdKey struct {
 	*LogRole
 	// 活动ID
-	ActionId string
+	ActionId int
 	// 玩家输入的兑换码
 	CdKey string
 	// 奖品信息
@@ -17,9 +21,9 @@ type LogCdKey struct {
 }
 
 func (l *LogCdKey) ToString() string {
-	return bigo.BiJoin("log_cdkey", l.LogRole.ToString(), l.ActionId, l.CdKey, l.Prize, l.FailReason)
+	return bigo.BiJoin("log_cdkey", l.LogRole.ToString(), strconv.Itoa(l.ActionId), l.CdKey, l.Prize, l.FailReason)
 }
 
-func NewLogCdKey(channelId int, uid string, actionId string, cdKey string, prize string, failReason string) *LogCdKey {
+func NewLogCdKey(channelId int, uid string, actionId int, cdKey string, prize string, failReason string) *LogCdKey {
 	return &LogCdKey{LogRole: NewLogRole(channelId, uid), ActionId: actionId, CdKey: cdKey, Prize: prize, FailReason: failReason}
 }
