@@ -34,7 +34,7 @@ type LogMoney struct {
 	Shop int
 }
 
-func (l *LogMoney) ToString(gameId string) string {
+func (l *LogMoney) ToString() string {
 	return bigo.BiJoin("log_money", l.LogReason.ToString(), strconv.FormatInt(l.OldMoney, 10), strconv.FormatInt(l.NewMoney, 10), strconv.FormatInt(l.Money, 10), strconv.Itoa(l.Num), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.MoneyType), l.ItemIdName, strconv.Itoa(l.ItemType), strconv.Itoa(l.ItemId), strconv.Itoa(l.Shop))
 }
 

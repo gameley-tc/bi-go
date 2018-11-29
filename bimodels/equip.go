@@ -24,7 +24,7 @@ func NewLogEquip(logReason *LogReason, addOrReduce int, equipType int, equipId i
 	return &LogEquip{LogReason: logReason, AddOrReduce: addOrReduce, EquipType: equipType, EquipId: equipId, Num: num}
 }
 
-func (l *LogEquip) ToString(gameId string) string {
+func (l *LogEquip) ToString() string {
 	return bigo.BiJoin("log_equip", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.Num))
 }
 

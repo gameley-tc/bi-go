@@ -3,9 +3,10 @@
 package bimodels
 
 import (
-	"github.com/gameley-tc/bi-go"
 	"strconv"
 	"time"
+
+	"github.com/gameley-tc/bi-go"
 )
 
 type LogRole struct {
@@ -26,10 +27,15 @@ type LogRole struct {
 	Payed int
 }
 
-func NewLogRole(logPlat *LogPlat, regDt time.Time, uid string, regionId int, level int, reged int, vip int, payed int) *LogRole {
-	return &LogRole{LogPlat: logPlat, RegDt: regDt, Uid: uid, RegionId: regionId, Level: level, Reged: reged, Vip: vip, Payed: payed}
+func NewLogRole(logPlat *LogPlat, uid string) *LogRole {
+	logPlat.Uuid = uid
+	return &LogRole{LogPlat: logPlat, Uid: uid, RegionId: bigo.BiSender.RegionId}
 }
 
 func (l *LogRole) ToString() string {
 	return bigo.BiJoin(l.Uuid, l.Uid, strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), bigo.BiDateFormat(l.RegDt), strconv.Itoa(l.Level), strconv.Itoa(l.Reged), strconv.Itoa(l.Vip), strconv.Itoa(l.Payed))
+}
+
+func (l *LogRole) ToStringReg() string {
+	return bigo.BiJoin(l.Uuid, l.Uid, strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), strconv.Itoa(l.Level), strconv.Itoa(l.Reged))
 }

@@ -20,7 +20,7 @@ type LogEnergy struct {
 	Energy int
 }
 
-func (l *LogEnergy) ToString(gameId string) string {
+func (l *LogEnergy) ToString() string {
 	return bigo.BiJoin("log_energy", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.OldEnergy), strconv.Itoa(l.NewEnergy), strconv.Itoa(l.Energy))
 }
 

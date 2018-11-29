@@ -17,7 +17,7 @@ type LogNewTask struct {
 	OrderId int
 }
 
-func (l *LogNewTask) ToString(gameId string) string {
+func (l *LogNewTask) ToString() string {
 	return bigo.BiJoin("log_new_task", l.LogReason.ToString(), strconv.Itoa(l.TaskId), strconv.Itoa(l.OrderId))
 }
 

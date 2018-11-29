@@ -22,7 +22,7 @@ type LogGamePattern struct {
 	Times int
 }
 
-func (l *LogGamePattern) ToString(gameId string) string {
+func (l *LogGamePattern) ToString() string {
 	return bigo.BiJoin("log_game_pattern", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.PatternType), strconv.Itoa(l.PatternId), strconv.Itoa(l.PatternSubId), strconv.Itoa(l.Times))
 }
 

@@ -22,7 +22,7 @@ type LogEquipDegree struct {
 	EquipDegree int
 }
 
-func (l *LogEquipDegree) ToString(gameId string) string {
+func (l *LogEquipDegree) ToString() string {
 	return bigo.BiJoin("log_equip_degree", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldDegree), strconv.Itoa(l.EquipNewDegree), strconv.Itoa(l.EquipDegree))
 }
 

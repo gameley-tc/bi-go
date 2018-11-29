@@ -18,6 +18,6 @@ func NewLogAppOnce(logAccountRole *LogAccountRole, actionNumber int) *LogAppOnce
 	return &LogAppOnce{LogAccountRole: logAccountRole, ActionNumber: actionNumber}
 }
 
-func (l *LogAppOnce) ToString(gameId string) string {
-	return bigo.BiJoin("log_app_once", l.LogAccountRole.ToString(gameId), strconv.Itoa(l.ActionNumber))
+func (l *LogAppOnce) ToString() string {
+	return bigo.BiJoin("log_app_once", l.LogAccountRole.ToString(), strconv.Itoa(l.ActionNumber))
 }

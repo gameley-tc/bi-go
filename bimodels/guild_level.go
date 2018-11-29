@@ -18,7 +18,7 @@ type LogGuildLevel struct {
 	GuildLevel int
 }
 
-func (l *LogGuildLevel) ToString(gameId string) string {
+func (l *LogGuildLevel) ToString() string {
 	return bigo.BiJoin("log_guild_level", l.LogGuildBase.ToString(), strconv.Itoa(l.GuildOldLevel), strconv.Itoa(l.GuildNewLevel), strconv.Itoa(l.GuildLevel))
 }
 

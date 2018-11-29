@@ -16,7 +16,7 @@ type LogGuild struct {
 	GuildId int
 }
 
-func (l *LogGuild) ToString(gameId string) string {
+func (l *LogGuild) ToString() string {
 	return bigo.BiJoin("log_guild", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.GuildId))
 }
 

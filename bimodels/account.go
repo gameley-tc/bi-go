@@ -2,6 +2,8 @@
 
 package bimodels
 
+import "github.com/gameley-tc/bi-go"
+
 type LogAccount struct {
 	*LogPlat
 	// 游戏ID
@@ -9,5 +11,5 @@ type LogAccount struct {
 }
 
 func NewLogAccount(logPlat *LogPlat) *LogAccount {
-	return &LogAccount{LogPlat: logPlat}
+	return &LogAccount{LogPlat: logPlat, GameId: bigo.BiSender.GameId}
 }

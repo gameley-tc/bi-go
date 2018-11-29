@@ -24,7 +24,7 @@ type LogEquipPlayWay struct {
 	PlayType int
 }
 
-func (l *LogEquipPlayWay) ToString(gameId string) string {
+func (l *LogEquipPlayWay) ToString() string {
 	return bigo.BiJoin("log_equip_playway", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel),strconv.Itoa(l.EquipLevel), strconv.Itoa(l.PlayType))
 }
 

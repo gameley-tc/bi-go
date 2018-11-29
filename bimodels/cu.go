@@ -24,10 +24,10 @@ type LogCu struct {
 	PayNotNum int
 }
 
-func (l *LogCu) ToString(gameId string) string {
+func (l *LogCu) ToString() string {
 	return bigo.BiJoin("log_cu", strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), strconv.Itoa(l.PayNum), strconv.Itoa(l.PayNotNum))
 }
 
-func NewLogCu(regionId int, channelId int, dt time.Time, payNum int, payNotNum int) *LogCu {
-	return &LogCu{PlatId: channelId % 100, RegionId: regionId, ChannelId: channelId, Dt: dt, PayNum: payNum, PayNotNum: payNotNum}
+func NewLogCu(channelId int, dt time.Time, payNum int, payNotNum int) *LogCu {
+	return &LogCu{PlatId: channelId % 100, RegionId: bigo.BiSender.RegionId, ChannelId: channelId, Dt: dt, PayNum: payNum, PayNotNum: payNotNum}
 }

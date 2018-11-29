@@ -22,7 +22,7 @@ type LogFriends struct {
 	FriendType int
 }
 
-func (l *LogFriends) ToString(gameId string) string {
+func (l *LogFriends) ToString() string {
 	return bigo.BiJoin("log_friends", l.LogRole.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.OldFriendsNum), strconv.Itoa(l.NewFriendsNum), strconv.Itoa(l.FriendsNum), strconv.Itoa(l.FriendType))
 }
 

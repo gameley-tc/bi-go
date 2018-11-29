@@ -21,7 +21,7 @@ type LogPower struct {
 	Power int64
 }
 
-func (l *LogPower) ToString(gameId string) string {
+func (l *LogPower) ToString() string {
 	return bigo.BiJoin("log_power", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.FormatInt(l.OldPower, 10), strconv.FormatInt(l.NewPower, 10), strconv.FormatInt(l.Power, 10))
 }
 

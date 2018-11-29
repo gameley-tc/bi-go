@@ -10,8 +10,8 @@ type LogReg struct {
 	*LogDevices
 }
 
-func (l *LogReg) ToString(gameId string) string {
-	return bigo.BiJoin("log_reg", l.LogRole.ToString(), l.LogDevices.ToString())
+func (l *LogReg) ToString() string {
+	return bigo.BiJoin("log_reg", l.LogRole.ToStringReg(), l.LogDevices.ToString())
 }
 
 func NewLogReg(logRole *LogRole, logDevices *LogDevices) *LogReg {

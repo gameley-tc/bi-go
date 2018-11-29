@@ -22,10 +22,10 @@ type LogAccountRole struct {
 	Reged int
 }
 
-func (l *LogAccountRole) ToString(gameId string) string {
-	return bigo.BiJoin(l.Uuid, l.Uid, gameId, strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), strconv.Itoa(l.Level), strconv.Itoa(l.Reged))
+func (l *LogAccountRole) ToString() string {
+	return bigo.BiJoin(l.Uuid, l.Uid, strconv.Itoa(l.GameId), strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), strconv.Itoa(l.ChannelId), bigo.BiDateFormat(l.Dt), strconv.Itoa(l.Level), strconv.Itoa(l.Reged))
 }
 
-func NewLogAccountRole(logPlat *LogPlat, uid string, regionId int, level int, reged int) *LogAccountRole {
-	return &LogAccountRole{LogPlat: logPlat, Uid: uid, RegionId: regionId, Level: level, Reged: reged}
+func NewLogAccountRole(logPlat *LogPlat, uid string) *LogAccountRole {
+	return &LogAccountRole{LogPlat: logPlat, GameId: bigo.BiSender.GameId, Uid: uid, RegionId: bigo.BiSender.RegionId}
 }

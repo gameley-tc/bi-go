@@ -20,7 +20,7 @@ type LogBattle struct {
 	Times int
 }
 
-func (l *LogBattle) ToString(gameId string) string {
+func (l *LogBattle) ToString() string {
 	return bigo.BiJoin("log_battle", l.LogRole.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.BattleType), strconv.Itoa(l.BattleId), strconv.Itoa(l.Times))
 }
 

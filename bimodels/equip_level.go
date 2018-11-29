@@ -22,7 +22,7 @@ type LogEquipLevel struct {
 	EquipLevel int
 }
 
-func (l *LogEquipLevel) ToString(gameId string) string {
+func (l *LogEquipLevel) ToString() string {
 	return bigo.BiJoin("log_equip_level", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel), strconv.Itoa(l.EquipLevel))
 }
 

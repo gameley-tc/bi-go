@@ -16,7 +16,7 @@ type LogCdKey struct {
 	FailReason string
 }
 
-func (l *LogCdKey) ToString(gameId string) string {
+func (l *LogCdKey) ToString() string {
 	return bigo.BiJoin("log_cdkey", l.LogRole.ToString(), l.ActionId, l.CdKey, l.Prize, l.FailReason)
 }
 

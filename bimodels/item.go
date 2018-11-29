@@ -24,7 +24,7 @@ type LogItem struct {
 	Num int
 }
 
-func (l *LogItem) ToString(gameId string) string {
+func (l *LogItem) ToString() string {
 	return bigo.BiJoin("log_item", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.ItemType), strconv.Itoa(l.ItemId), strconv.Itoa(l.OldNum), strconv.Itoa(l.NewNum), strconv.Itoa(l.Num))
 }
 

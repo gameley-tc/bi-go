@@ -13,13 +13,13 @@ type LogAdVideo struct {
 	// 视频触发点
 	Point int
 	// 具体动作
-	AdType bigo.LogEnumAd
+	ActionType bigo.LogEnumAd
 }
 
-func NewLogAdVideo(logRole *LogRole, point int, adType bigo.LogEnumAd) *LogAdVideo {
-	return &LogAdVideo{LogRole: logRole, Point: point, AdType: adType}
+func NewLogAdVideo(logRole *LogRole, point int, actionType bigo.LogEnumAd) *LogAdVideo {
+	return &LogAdVideo{LogRole: logRole, Point: point, ActionType: actionType}
 }
 
-func (l *LogAdVideo) ToString(gameId string) string {
-	return bigo.BiJoin("log_ad_video", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(int(l.AdType)))
+func (l *LogAdVideo) ToString() string {
+	return bigo.BiJoin("log_ad_video", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(int(l.ActionType)))
 }

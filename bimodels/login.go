@@ -27,7 +27,7 @@ type LogLogin struct {
 	RoleName string
 }
 
-func (l *LogLogin) ToString(gameId string) string {
+func (l *LogLogin) ToString() string {
 	return bigo.BiJoin("log_login", l.LogRole.ToString(), l.LogDevices.ToString(), strconv.Itoa(int(l.LoginType)), strconv.Itoa(l.FriendsNum), strconv.Itoa(l.Online), strconv.Itoa(l.Power), strconv.Itoa(l.Energy), l.GuildId, l.RoleName)
 }
 

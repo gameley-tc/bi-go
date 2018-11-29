@@ -42,7 +42,7 @@ type LogPay struct {
 	DBeforeStoreNum int64
 }
 
-func (l *LogPay) ToString(gameId string) string {
+func (l *LogPay) ToString() string {
 	return bigo.BiJoin("log_pay", l.LogRole.ToString(), strconv.Itoa(int(l.PayType)), l.OrderNumber, strconv.FormatInt(l.DPrice, 10), strconv.FormatInt(l.DStoreNum, 10), strconv.FormatInt(l.TotalNum, 10), strconv.Itoa(l.FPayFlag), strconv.Itoa(l.PayChannelId), l.PayId, l.PayIdName, strconv.Itoa(l.DNum), strconv.FormatInt(l.DBeforeStoreNum, 10))
 }
 

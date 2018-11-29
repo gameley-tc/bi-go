@@ -48,5 +48,5 @@ func NewLogDevices(deviceId string, ip string, clientVersion string, systemSoftw
 }
 
 func (l *LogDevices) ToString() string {
-	return bigo.BiJoin(l.DeviceId, l.Ip, l.ClientVersion, l.SystemHardware, l.SystemHardware, strconv.Itoa(int(l.Telecom)), strconv.Itoa(int(l.Network)), l.CpuHardware, l.GpuHardware, strconv.Itoa(l.Memory), strconv.Itoa(l.ScreenWidth), strconv.Itoa(l.ScreenHeight), "", l.GlRender, l.GlVersion, l.PhoneNumber)
+	return bigo.BiJoin(l.DeviceId, l.Ip, l.ClientVersion, l.SystemHardware, l.SystemHardware, strconv.Itoa(int(l.Telecom)), strconv.Itoa(int(l.Network)), l.CpuHardware, l.GpuHardware, strconv.Itoa(l.Memory), strconv.Itoa(l.ScreenWidth), strconv.Itoa(l.ScreenHeight), "0", l.GlRender, l.GlVersion, l.PhoneNumber)
 }

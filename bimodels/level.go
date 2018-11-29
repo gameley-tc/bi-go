@@ -19,7 +19,7 @@ type LogLevel struct {
 	Num int
 }
 
-func (l *LogLevel) ToString(gameId string) string {
+func (l *LogLevel) ToString() string {
 	return bigo.BiJoin("log_level", l.LogReason.ToString(), strconv.Itoa(l.HeroId), strconv.Itoa(l.NewLevel), strconv.Itoa(l.Num))
 }
 
