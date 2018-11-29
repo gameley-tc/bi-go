@@ -9,10 +9,11 @@ type LogLoginU struct {
 	*LogDevices
 }
 
-func NewLogLoginU(logAccountRole *LogAccountRole, logDevices *LogDevices) *LogLoginU {
-	return &LogLoginU{LogAccountRole: logAccountRole, LogDevices: logDevices}
+// 渠道账号登录日志必填字段
+func NewLogLoginU(channelId int, uid string) *LogLoginU {
+	return &LogLoginU{LogAccountRole: NewLogAccountRole(channelId, uid, uid), LogDevices: &LogDevices{}}
 }
 
-func (l *LogLoginU) ToString() string{
+func (l *LogLoginU) ToString() string {
 	return bigo.BiJoin("log_login_u", l.LogAccountRole.ToString(), l.LogDevices.ToString())
 }

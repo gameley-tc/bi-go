@@ -8,14 +8,15 @@ import (
 	"github.com/gameley-tc/bi-go"
 )
 
+// 打开APP只发一次日志必填字段
 type LogAppOnce struct {
 	*LogAccountRole
 	// 行为编号
 	ActionNumber int
 }
 
-func NewLogAppOnce(logAccountRole *LogAccountRole, actionNumber int) *LogAppOnce {
-	return &LogAppOnce{LogAccountRole: logAccountRole, ActionNumber: actionNumber}
+func NewLogAppOnce(uuid string, channelId, actionNumber int) *LogAppOnce {
+	return &LogAppOnce{LogAccountRole: NewLogAccountRole(channelId, uuid, uuid), ActionNumber: actionNumber}
 }
 
 func (l *LogAppOnce) ToString() string {

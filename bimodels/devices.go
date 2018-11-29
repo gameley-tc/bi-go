@@ -34,7 +34,7 @@ type LogDevices struct {
 	// 显示屏高度
 	ScreenHeight int
 	// 像素密度
-	//Density float32
+	// Density float32
 	// openGL render信息
 	GlRender string
 	// openGL 版本信息

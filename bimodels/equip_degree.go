@@ -26,6 +26,6 @@ func (l *LogEquipDegree) ToString() string {
 	return bigo.BiJoin("log_equip_degree", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldDegree), strconv.Itoa(l.EquipNewDegree), strconv.Itoa(l.EquipDegree))
 }
 
-func NewLogEquipDegree(logReason *LogReason, equipType int, equipId int, equipOldDegree int, equipNewDegree int) *LogEquipDegree {
-	return &LogEquipDegree{LogReason: logReason, EquipType: equipType, EquipId: equipId, EquipOldDegree: equipOldDegree, EquipNewDegree: equipNewDegree, EquipDegree: bigo.BiAbs(equipNewDegree - equipOldDegree)}
+func NewLogEquipDegree(channelId int, uid string, equipType int, equipId int, equipOldDegree int, equipNewDegree int) *LogEquipDegree {
+	return &LogEquipDegree{LogReason: NewLogReason(channelId, uid), EquipType: equipType, EquipId: equipId, EquipOldDegree: equipOldDegree, EquipNewDegree: equipNewDegree, EquipDegree: bigo.BiAbs(equipNewDegree - equipOldDegree)}
 }

@@ -46,8 +46,19 @@ func (l *LogPay) ToString() string {
 	return bigo.BiJoin("log_pay", l.LogRole.ToString(), strconv.Itoa(int(l.PayType)), l.OrderNumber, strconv.FormatInt(l.DPrice, 10), strconv.FormatInt(l.DStoreNum, 10), strconv.FormatInt(l.TotalNum, 10), strconv.Itoa(l.FPayFlag), strconv.Itoa(l.PayChannelId), l.PayId, l.PayIdName, strconv.Itoa(l.DNum), strconv.FormatInt(l.DBeforeStoreNum, 10))
 }
 
-func NewLogPay(logRole *LogRole, payType bigo.LogEnumPay, orderNumber string, DPrice int64, DStoreNum int64, totalNum int64, FPayFlag int, DNum int, DBeforeStoreNum int64) *LogPay {
-	return &LogPay{LogRole: logRole, PayType: payType, OrderNumber: orderNumber, DPrice: DPrice, DStoreNum: DStoreNum, TotalNum: totalNum, FPayFlag: FPayFlag, DNum: DNum, DBeforeStoreNum: DBeforeStoreNum}
+// 充值日志必填字段
+// channelId 渠道id
+// uid  uid
+// payTypeEnum  充值类型，详情请看枚举
+// orderNumber  订单号
+// dPrice     充值代币金额，建议实际充值单位*100,以避免打折等引起小数问题，默认为人民币分
+// dStoreNum  充值后存量，充值后玩家拥有的代币（钻石）数
+// totalNum   首充标志位 只有当一个区服内的玩家第一次充值时发1，其他都发0
+// fPayFlag   充值渠道id 当登录渠道与充值渠道不同时需要发送，相同时发0
+// dNum       本次充值代币(钻石)数量
+// dBeforeStoreNum  充值前代币(钻石)存量
+func NewLogPay(channelId int, uid string, payType bigo.LogEnumPay, orderNumber string, dPrice int64, dStoreNum int64, totalNum int64, fPayFlag int, dNum int, dBeforeStoreNum int64) *LogPay {
+	return &LogPay{LogRole: NewLogRole(channelId, uid), PayType: payType, OrderNumber: orderNumber, DPrice: dPrice, DStoreNum: dStoreNum, TotalNum: totalNum, FPayFlag: fPayFlag, DNum: dNum, DBeforeStoreNum: dBeforeStoreNum}
 }
 
 

@@ -22,6 +22,6 @@ func (l *LogGuildLevel) ToString() string {
 	return bigo.BiJoin("log_guild_level", l.LogGuildBase.ToString(), strconv.Itoa(l.GuildOldLevel), strconv.Itoa(l.GuildNewLevel), strconv.Itoa(l.GuildLevel))
 }
 
-func NewLogGuildLevel(logGuildBase *LogGuildBase, guildOldLevel int, guildNewLevel int) *LogGuildLevel {
-	return &LogGuildLevel{LogGuildBase: logGuildBase, GuildOldLevel: guildOldLevel, GuildNewLevel: guildNewLevel, GuildLevel: bigo.BiAbs(guildNewLevel - guildOldLevel)}
+func NewLogGuildLevel(channelId, guildId, guildOldLevel, guildNewLevel int) *LogGuildLevel {
+	return &LogGuildLevel{LogGuildBase: NewLogGuildBase(channelId, guildId), GuildOldLevel: guildOldLevel, GuildNewLevel: guildNewLevel, GuildLevel: bigo.BiAbs(guildNewLevel - guildOldLevel)}
 }

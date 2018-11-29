@@ -20,6 +20,6 @@ func (l *LogGuildU) ToString() string {
 	return bigo.BiJoin("log_guild_u", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.GuildId))
 }
 
-func NewLogGuildU(logReason *LogReason, logType bigo.LogEnumGuildU, guildId int) *LogGuildU {
-	return &LogGuildU{LogReason: logReason, LogType: logType, GuildId: guildId}
+func NewLogGuildU(channelId int, uid string, logType bigo.LogEnumGuildU, guildId int) *LogGuildU {
+	return &LogGuildU{LogReason: NewLogReason(channelId, uid), LogType: logType, GuildId: guildId}
 }

@@ -14,8 +14,8 @@ type LogReason struct {
 	SubReason string
 }
 
-func NewLogReason(logRole *LogRole, sequenceId string, reason string, subReason string) *LogReason {
-	return &LogReason{LogRole: logRole, SequenceId: sequenceId, Reason: reason, SubReason: subReason}
+func NewLogReason(channelId int, uid string) *LogReason {
+	return &LogReason{LogRole: NewLogRole(channelId, uid)}
 }
 
 func (l *LogReason) ToString() string {

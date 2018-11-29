@@ -18,7 +18,7 @@ func (l *LogGuildDonate) ToString() string {
 	return bigo.BiJoin("log_guild_donate", l.LogReason.ToString(), strconv.Itoa(l.GuildId))
 }
 
-func NewLogGuildDonate(logReason *LogReason, guildId int) *LogGuildDonate {
-	return &LogGuildDonate{LogReason: logReason, GuildId: guildId}
+func NewLogGuildDonate(channelId int, uid string, guildId int) *LogGuildDonate {
+	return &LogGuildDonate{LogReason: NewLogReason(channelId, uid), GuildId: guildId}
 }
 

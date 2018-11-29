@@ -20,6 +20,6 @@ func (l *LogCdKey) ToString() string {
 	return bigo.BiJoin("log_cdkey", l.LogRole.ToString(), l.ActionId, l.CdKey, l.Prize, l.FailReason)
 }
 
-func NewLogCdKey(logRole *LogRole, actionId string, cdKey string, prize string, failReason string) *LogCdKey {
-	return &LogCdKey{LogRole: logRole, ActionId: actionId, CdKey: cdKey, Prize: prize, FailReason: failReason}
+func NewLogCdKey(channelId int, uid string, actionId string, cdKey string, prize string, failReason string) *LogCdKey {
+	return &LogCdKey{LogRole: NewLogRole(channelId, uid), ActionId: actionId, CdKey: cdKey, Prize: prize, FailReason: failReason}
 }

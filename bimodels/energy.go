@@ -24,8 +24,8 @@ func (l *LogEnergy) ToString() string {
 	return bigo.BiJoin("log_energy", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.OldEnergy), strconv.Itoa(l.NewEnergy), strconv.Itoa(l.Energy))
 }
 
-func NewLogEnergy(logReason *LogReason, oldEnergy int, newEnergy int) *LogEnergy {
-	return &LogEnergy{LogReason: logReason, OldEnergy: oldEnergy, NewEnergy: newEnergy, Energy: bigo.BiAbs(newEnergy - oldEnergy), AddOrReduce: bigo.BiGetAddOrReduce(newEnergy, oldEnergy)}
+func NewLogEnergy(channelId int, uid string, oldEnergy int, newEnergy int) *LogEnergy {
+	return &LogEnergy{LogReason: NewLogReason(channelId, uid), OldEnergy: oldEnergy, NewEnergy: newEnergy, Energy: bigo.BiAbs(newEnergy - oldEnergy), AddOrReduce: bigo.BiGetAddOrReduce(newEnergy, oldEnergy)}
 }
 
 

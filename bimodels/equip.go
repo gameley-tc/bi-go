@@ -20,14 +20,15 @@ type LogEquip struct {
 	Num int
 }
 
-func NewLogEquip(logReason *LogReason, addOrReduce int, equipType int, equipId int, num int) *LogEquip {
-	return &LogEquip{LogReason: logReason, AddOrReduce: addOrReduce, EquipType: equipType, EquipId: equipId, Num: num}
+func NewLogEquip(channelId int, uid, sequenceId, reason, subReason string, addOrReduce int, equipType int, equipId int, num int) *LogEquip {
+	return &LogEquip{LogReason: &LogReason{
+		SequenceId: sequenceId,
+		Reason:     reason,
+		SubReason:  subReason,
+		LogRole:    NewLogRole(channelId, uid),
+	}, AddOrReduce: addOrReduce, EquipType: equipType, EquipId: equipId, Num: num}
 }
 
 func (l *LogEquip) ToString() string {
 	return bigo.BiJoin("log_equip", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.Num))
 }
-
-
-
-

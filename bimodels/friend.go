@@ -26,6 +26,6 @@ func (l *LogFriends) ToString() string {
 	return bigo.BiJoin("log_friends", l.LogRole.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.OldFriendsNum), strconv.Itoa(l.NewFriendsNum), strconv.Itoa(l.FriendsNum), strconv.Itoa(l.FriendType))
 }
 
-func NewLogFriends(logRole *LogRole, oldFriendsNum int, newFriendsNum int, friendType int) *LogFriends {
-	return &LogFriends{LogRole: logRole, AddOrReduce: bigo.BiGetAddOrReduce(newFriendsNum, oldFriendsNum), OldFriendsNum: oldFriendsNum, NewFriendsNum: newFriendsNum, FriendsNum: bigo.BiAbs(newFriendsNum - oldFriendsNum), FriendType: friendType}
+func NewLogFriends(channelId int, uid string, oldFriendsNum int, newFriendsNum int, friendType int) *LogFriends {
+	return &LogFriends{LogRole: NewLogRole(channelId, uid), AddOrReduce: bigo.BiGetAddOrReduce(newFriendsNum, oldFriendsNum), OldFriendsNum: oldFriendsNum, NewFriendsNum: newFriendsNum, FriendsNum: bigo.BiAbs(newFriendsNum - oldFriendsNum), FriendType: friendType}
 }

@@ -27,9 +27,8 @@ type LogRole struct {
 	Payed int
 }
 
-func NewLogRole(logPlat *LogPlat, uid string) *LogRole {
-	logPlat.Uuid = uid
-	return &LogRole{LogPlat: logPlat, Uid: uid, RegionId: bigo.BiSender.RegionId}
+func NewLogRole(channelId int, uid string) *LogRole {
+	return &LogRole{LogPlat: NewLogPlat(channelId, uid), Uid: uid, RegionId: bigo.BiSender.RegionId}
 }
 
 func (l *LogRole) ToString() string {

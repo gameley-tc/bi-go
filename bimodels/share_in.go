@@ -21,6 +21,6 @@ func (l *LogShareIn) ToString(gameId string) string {
 	return bigo.BiJoin("log_share_in", l.LogRole.ToString(), strconv.Itoa(l.Point), strconv.Itoa(l.NewPlayer))
 }
 
-func NewLogShareIn(logRole *LogRole, point int, newPlayer int) *LogShareIn {
-	return &LogShareIn{LogRole: logRole, Point: point, NewPlayer: newPlayer}
+func NewLogShareIn(channelId int, uid string, point int, newPlayer int) *LogShareIn {
+	return &LogShareIn{LogRole: NewLogRole(channelId, uid), Point: point, NewPlayer: newPlayer}
 }

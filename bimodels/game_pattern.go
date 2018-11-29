@@ -26,7 +26,6 @@ func (l *LogGamePattern) ToString() string {
 	return bigo.BiJoin("log_game_pattern", l.LogReason.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.PatternType), strconv.Itoa(l.PatternId), strconv.Itoa(l.PatternSubId), strconv.Itoa(l.Times))
 }
 
-func NewLogGamePattern(logReason *LogReason, logType bigo.LogEnumGamePattern, patternType int, patternId int, patternSubId int, times int) *LogGamePattern {
-	return &LogGamePattern{LogReason: logReason, LogType: logType, PatternType: patternType, PatternId: patternId, PatternSubId: patternSubId, Times: times}
+func NewLogGamePattern(channelId int, uid string, logType bigo.LogEnumGamePattern, patternType int, patternId int, patternSubId int, times int) *LogGamePattern {
+	return &LogGamePattern{LogReason: NewLogReason(channelId, uid), LogType: logType, PatternType: patternType, PatternId: patternId, PatternSubId: patternSubId, Times: times}
 }
-

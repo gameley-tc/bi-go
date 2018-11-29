@@ -25,6 +25,6 @@ func (l *LogPower) ToString() string {
 	return bigo.BiJoin("log_power", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.FormatInt(l.OldPower, 10), strconv.FormatInt(l.NewPower, 10), strconv.FormatInt(l.Power, 10))
 }
 
-func NewLogPower(logReason *LogReason, oldPower int64, newPower int64) *LogPower {
-	return &LogPower{LogReason: logReason, AddOrReduce: bigo.BiGetAddOrReduceInt64(newPower, oldPower), OldPower: oldPower, NewPower: newPower, Power: bigo.BiAbsInt64(newPower - oldPower)}
+func NewLogPower(channelId int, uid string, oldPower int64, newPower int64) *LogPower {
+	return &LogPower{LogReason: NewLogReason(channelId, uid), AddOrReduce: bigo.BiGetAddOrReduceInt64(newPower, oldPower), OldPower: oldPower, NewPower: newPower, Power: bigo.BiAbsInt64(newPower - oldPower)}
 }

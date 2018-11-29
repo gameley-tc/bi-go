@@ -18,9 +18,9 @@ type LogTask struct {
 }
 
 func (l *LogTask) ToString() string {
-return bigo.BiJoin("log_task", l.LogReason.ToString(), strconv.Itoa(l.TaskType), strconv.Itoa(l.TaskId))
+	return bigo.BiJoin("log_task", l.LogReason.ToString(), strconv.Itoa(l.TaskType), strconv.Itoa(l.TaskId))
 }
 
-func NewLogTask(logReason *LogReason, taskType int, taskId int) *LogTask {
-	return &LogTask{LogReason: logReason, TaskType: taskType, TaskId: taskId}
+func NewLogTask(channelId int, uid string, taskType int, taskId int) *LogTask {
+	return &LogTask{LogReason: NewLogReason(channelId, uid), TaskType: taskType, TaskId: taskId}
 }

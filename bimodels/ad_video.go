@@ -16,8 +16,8 @@ type LogAdVideo struct {
 	ActionType bigo.LogEnumAd
 }
 
-func NewLogAdVideo(logRole *LogRole, point int, actionType bigo.LogEnumAd) *LogAdVideo {
-	return &LogAdVideo{LogRole: logRole, Point: point, ActionType: actionType}
+func NewLogAdVideo(channelId int, uid string, point int, actionType bigo.LogEnumAd) *LogAdVideo {
+	return &LogAdVideo{LogRole: NewLogRole(channelId, uid), Point: point, ActionType: actionType}
 }
 
 func (l *LogAdVideo) ToString() string {

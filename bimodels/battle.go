@@ -24,8 +24,8 @@ func (l *LogBattle) ToString() string {
 	return bigo.BiJoin("log_battle", l.LogRole.ToString(), strconv.Itoa(int(l.LogType)), strconv.Itoa(l.BattleType), strconv.Itoa(l.BattleId), strconv.Itoa(l.Times))
 }
 
-func NewLogBattle(logReason *LogReason, logType bigo.LogEnumGamePattern, battleType int, battleId int, times int) *LogBattle {
-	return &LogBattle{LogReason: logReason, LogType: logType, BattleType: battleType, BattleId: battleId, Times: times}
+func NewLogBattle(channelId int, uid string, logType bigo.LogEnumGamePattern, battleType int, battleId int, times int) *LogBattle {
+	return &LogBattle{LogReason: NewLogReason(channelId, uid), LogType: logType, BattleType: battleType, BattleId: battleId, Times: times}
 }
 
 

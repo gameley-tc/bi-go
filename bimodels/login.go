@@ -31,8 +31,9 @@ func (l *LogLogin) ToString() string {
 	return bigo.BiJoin("log_login", l.LogRole.ToString(), l.LogDevices.ToString(), strconv.Itoa(int(l.LoginType)), strconv.Itoa(l.FriendsNum), strconv.Itoa(l.Online), strconv.Itoa(l.Power), strconv.Itoa(l.Energy), l.GuildId, l.RoleName)
 }
 
-func NewLogLogin(logRole *LogRole, logDevices *LogDevices, loginType bigo.LogEnumStatus, friendsNum int, online int, power int, energy int, guildId string, roleName string) *LogLogin {
-	return &LogLogin{LogRole: logRole, LogDevices: logDevices, LoginType: loginType, FriendsNum: friendsNum, Online: online, Power: power, Energy: energy, GuildId: guildId, RoleName: roleName}
+// 最基本的必填字段,如果还需要其它字段(online、guild_id、role_name)请自由组合
+// channelId 渠道id
+// loginType 登录类型
+func NewLogLogin(channelId int, uid string, loginType bigo.LogEnumStatus) *LogLogin {
+	return &LogLogin{LogRole: NewLogRole(channelId, uid), LogDevices: &LogDevices{}, LoginType: loginType}
 }
-
-

@@ -21,6 +21,6 @@ func (l *LogNewTask) ToString() string {
 	return bigo.BiJoin("log_new_task", l.LogReason.ToString(), strconv.Itoa(l.TaskId), strconv.Itoa(l.OrderId))
 }
 
-func NewLogNewTask(logReason *LogReason, taskId int, orderId int) *LogNewTask {
-	return &LogNewTask{LogReason: logReason, TaskId: taskId, OrderId: orderId}
+func NewLogNewTask(channelId int, uid string, taskId int, orderId int) *LogNewTask {
+	return &LogNewTask{LogReason: NewLogReason(channelId, uid), TaskId: taskId, OrderId: orderId}
 }

@@ -32,6 +32,6 @@ func (l *LogGuildBase) ToString() string {
 	return bigo.BiJoin(strconv.Itoa(l.PlatId), strconv.Itoa(l.RegionId), bigo.BiDateFormat(l.Dt), l.SequenceId, l.Reason, l.SubReason, strconv.Itoa(l.GuildId))
 }
 
-func NewLogGuildBase(channelId int, dt time.Time, sequenceId string, reason string, subReason string, guildId int) *LogGuildBase {
-	return &LogGuildBase{PlatId: channelId % 100, ChannelId: channelId, RegionId: bigo.BiSender.RegionId, Dt: dt, SequenceId: sequenceId, Reason: reason, SubReason: subReason, GuildId: guildId}
+func NewLogGuildBase(channelId int, guildId int) *LogGuildBase {
+	return &LogGuildBase{PlatId: channelId % 100, ChannelId: channelId, RegionId: bigo.BiSender.RegionId, Dt: time.Now(), GuildId: guildId}
 }

@@ -28,6 +28,6 @@ func (l *LogEquipPlayWay) ToString() string {
 	return bigo.BiJoin("log_equip_playway", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel),strconv.Itoa(l.EquipLevel), strconv.Itoa(l.PlayType))
 }
 
-func NewLogEquipPlayWay(logReason *LogReason, equipType int, equipId int, equipOldLevel int, equipNewLevel int, playType int) *LogEquipPlayWay {
-	return &LogEquipPlayWay{LogReason: logReason, EquipType: equipType, EquipId: equipId, EquipOldLevel: equipOldLevel, EquipNewLevel: equipNewLevel, PlayType: playType, EquipLevel: bigo.BiAbs(equipNewLevel - equipOldLevel)}
+func NewLogEquipPlayWay(channelId int, uid string, equipType int, equipId int, equipOldLevel int, equipNewLevel int, playType int) *LogEquipPlayWay {
+	return &LogEquipPlayWay{LogReason: NewLogReason(channelId, uid), EquipType: equipType, EquipId: equipId, EquipOldLevel: equipOldLevel, EquipNewLevel: equipNewLevel, PlayType: playType, EquipLevel: bigo.BiAbs(equipNewLevel - equipOldLevel)}
 }

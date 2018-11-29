@@ -26,6 +26,6 @@ func (l *LogEquipLevel) ToString() string {
 	return bigo.BiJoin("log_equip_level", l.LogReason.ToString(), strconv.Itoa(l.EquipType), strconv.Itoa(l.EquipId), strconv.Itoa(l.EquipOldLevel), strconv.Itoa(l.EquipNewLevel), strconv.Itoa(l.EquipLevel))
 }
 
-func NewLogEquipLevel(logReason *LogReason, equipType int, equipId int, equipOldLevel int, equipNewLevel int) *LogEquipLevel {
-	return &LogEquipLevel{LogReason: logReason, EquipType: equipType, EquipId: equipId, EquipOldLevel: equipOldLevel, EquipNewLevel: equipNewLevel, EquipLevel: bigo.BiAbs(equipNewLevel - equipOldLevel)}
+func NewLogEquipLevel(channelId int, uid string, equipType int, equipId int, equipOldLevel int, equipNewLevel int) *LogEquipLevel {
+	return &LogEquipLevel{LogReason: NewLogReason(channelId, uid), EquipType: equipType, EquipId: equipId, EquipOldLevel: equipOldLevel, EquipNewLevel: equipNewLevel, EquipLevel: bigo.BiAbs(equipNewLevel - equipOldLevel)}
 }

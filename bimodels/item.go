@@ -28,6 +28,21 @@ func (l *LogItem) ToString() string {
 	return bigo.BiJoin("log_item", l.LogReason.ToString(), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.ItemType), strconv.Itoa(l.ItemId), strconv.Itoa(l.OldNum), strconv.Itoa(l.NewNum), strconv.Itoa(l.Num))
 }
 
-func NewLogItem(logReason *LogReason, itemType int, itemId int, oldNum int, newNum int) *LogItem {
-	return &LogItem{LogReason: logReason, AddOrReduce: bigo.BiGetAddOrReduce(newNum, oldNum), ItemType: itemType, ItemId: itemId, OldNum: oldNum, NewNum: newNum, Num: bigo.BiAbs(newNum - oldNum)}
+// 道具变动日志必填参数
+// channelId 渠道id
+// uid uid
+// sequenceId 关联一次事件的唯一ID
+// reason 一级原因
+// subReason 二级原因
+// itemType 道具类型
+// itemId   道具id
+// oldNum   道具原有数量
+// newNum   道具新的数量
+func NewLogItem(channelId int, uid string, sequenceId, reason, subReason string, itemType int, itemId int, oldNum int, newNum int) *LogItem {
+	return &LogItem{LogReason: &LogReason{
+		SequenceId: sequenceId,
+		Reason:     reason,
+		SubReason:  subReason,
+		LogRole:    NewLogRole(channelId, uid),
+	}, AddOrReduce: bigo.BiGetAddOrReduce(newNum, oldNum), ItemType: itemType, ItemId: itemId, OldNum: oldNum, NewNum: newNum, Num: bigo.BiAbs(newNum - oldNum)}
 }

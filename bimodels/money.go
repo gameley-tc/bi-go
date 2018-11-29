@@ -38,6 +38,31 @@ func (l *LogMoney) ToString() string {
 	return bigo.BiJoin("log_money", l.LogReason.ToString(), strconv.FormatInt(l.OldMoney, 10), strconv.FormatInt(l.NewMoney, 10), strconv.FormatInt(l.Money, 10), strconv.Itoa(l.Num), strconv.Itoa(l.AddOrReduce), strconv.Itoa(l.MoneyType), l.ItemIdName, strconv.Itoa(l.ItemType), strconv.Itoa(l.ItemId), strconv.Itoa(l.Shop))
 }
 
-func NewLogMoney(logReason *LogReason, oldMoney int64, newMoney int64, num int, moneyType int, itemIdName string, itemType int, itemId int, shop int) *LogMoney {
-	return &LogMoney{LogReason: logReason, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: bigo.BiGetAddOrReduceInt64(newMoney, oldMoney), MoneyType: moneyType, ItemIdName: itemIdName, ItemType: itemType, ItemId: itemId, Shop: shop, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
+// money日志必填字段（非商城购买行为）
+// channelId 渠道id
+// uid  uid
+// sequenceId 关联一次事件的唯一ID
+// reason 一级原因
+// subReason 二级原因
+// oldMoney 代币老的数量
+// newMoney 代币新的数量
+// num  道具个数，本次购买道具、装备的个数 买货币时为0
+// moneyType 代币类型
+func NewLogMoney(channelId int, uid, sequenceId, reason, subReason string, oldMoney int64, newMoney int64, num int, moneyType int) *LogMoney {
+	return &LogMoney{LogReason: &LogReason{
+		SequenceId: sequenceId,
+		Reason:     reason,
+		SubReason:  subReason,
+		LogRole:    NewLogRole(channelId, uid),
+	}, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: bigo.BiGetAddOrReduceInt64(newMoney, oldMoney), MoneyType: moneyType, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
+}
+
+// money日志必填字段（商城购买行为）
+func NewLogMoneyStore(channelId int, uid, sequenceId, reason, subReason string, oldMoney int64, newMoney int64, num int, moneyType int, itemIdName string, itemType int, itemId int, shop int) *LogMoney {
+	return &LogMoney{LogReason: &LogReason{
+		SequenceId: sequenceId,
+		Reason:     reason,
+		SubReason:  subReason,
+		LogRole:    NewLogRole(channelId, uid),
+	}, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: bigo.BiGetAddOrReduceInt64(newMoney, oldMoney), MoneyType: moneyType, ItemIdName: itemIdName, ItemType: itemType, ItemId: itemId, Shop: shop, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
 }

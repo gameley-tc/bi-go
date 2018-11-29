@@ -14,7 +14,6 @@ func (l *LogReg) ToString() string {
 	return bigo.BiJoin("log_reg", l.LogRole.ToStringReg(), l.LogDevices.ToString())
 }
 
-func NewLogReg(logRole *LogRole, logDevices *LogDevices) *LogReg {
-	return &LogReg{LogRole: logRole, LogDevices: logDevices}
+func NewLogReg(channelId int, uid string) *LogReg {
+	return &LogReg{LogRole: NewLogRole(channelId, uid), LogDevices: &LogDevices{}}
 }
-
