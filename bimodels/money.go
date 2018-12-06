@@ -58,11 +58,11 @@ func NewLogMoney(channelId int, uid, sequenceId, reason, subReason string, oldMo
 }
 
 // money日志必填字段（商城购买行为）
-func NewLogMoneyStore(channelId int, uid, sequenceId, reason, subReason string, oldMoney int64, newMoney int64, num int, moneyType int, itemIdName string, itemType int, itemId int, shop int) *LogMoney {
+func NewLogMoneyStore(channelId int, uid, sequenceId, reason, subReason string, oldMoney int64, newMoney int64, num int, moneyType int, itemIdName string, itemType int, itemId int) *LogMoney {
 	return &LogMoney{LogReason: &LogReason{
 		SequenceId: sequenceId,
 		Reason:     reason,
 		SubReason:  subReason,
 		LogRole:    NewLogRole(channelId, uid),
-	}, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: bigo.BiGetAddOrReduceInt64(newMoney, oldMoney), MoneyType: moneyType, ItemIdName: itemIdName, ItemType: itemType, ItemId: itemId, Shop: shop, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
+	}, OldMoney: oldMoney, NewMoney: newMoney, Num: num, AddOrReduce: bigo.BiGetAddOrReduceInt64(newMoney, oldMoney), MoneyType: moneyType, ItemIdName: itemIdName, ItemType: itemType, ItemId: itemId, Shop: 1, Money: bigo.BiAbsInt64(newMoney - oldMoney)}
 }

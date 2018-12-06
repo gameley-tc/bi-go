@@ -39,6 +39,7 @@ func main() {
 	logLoginU := bimodels.NewLogLoginU(2006603, "121212",)
 
 	logMoney := bimodels.NewLogMoney(2006603, "121212","d","sd","s",23,13,32,1)
+	logMoneyStore := bimodels.NewLogMoneyStore(2006603, "121212","d","sd","s",23,13,32,1, "23", 1, 12)
 
 	logNewTask := bimodels.NewLogNewTask(2006603, "121212",21,12)
 
@@ -76,6 +77,7 @@ func main() {
 	bigo.BiSender.Send(logLogin)
 	bigo.BiSender.Send(logLoginU)
 	bigo.BiSender.Send(logMoney)
+	bigo.BiSender.Send(logMoneyStore)
 	bigo.BiSender.Send(logNewTask)
 	bigo.BiSender.Send(logPay)
 	bigo.BiSender.Send(logPower)
