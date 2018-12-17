@@ -17,7 +17,9 @@ type LogAppOnce struct {
 }
 
 func NewLogAppOnce(uuid string, channelId, actionNumber int) *LogAppOnce {
-	return &LogAppOnce{LogAccountRole: NewLogAccountRole(channelId, uuid, uuid), LogDevices: &LogDevices{}, ActionNumber: actionNumber}
+	return &LogAppOnce{LogAccountRole: NewLogAccountRole(channelId, uuid, uuid), LogDevices: &LogDevices{
+		DeviceId:uuid,
+	}, ActionNumber: actionNumber}
 }
 
 func (l *LogAppOnce) ToString() string {
